@@ -55,6 +55,10 @@
       background: linear-gradient(180deg, #16A34A 0%, #15803D 100%);
       box-shadow: 0 4px 0 #166534, 0 6px 12px rgba(0,0,0,0.25);
     }
+    .badge-3d-purple {
+      background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
+      box-shadow: 0 4px 0 #5B21B6, 0 6px 12px rgba(0,0,0,0.25);
+    }
     .card-3d-poster {
       box-shadow: 0 8px 0 rgba(0,0,0,0.06), 0 14px 28px -4px rgba(0, 0, 0, 0.15);
     }
@@ -469,7 +473,7 @@
     const GSHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzcBHKiLPatgTYbQ9HnpXQgnKTxyNBwzOkyc3TNBNi71Td0n3QDFCR2Er7TQfNKJ6vS/exec";
 
     // -------------------------------------------------------------
-    // SENARAI 11 PAUTAN SEBENAR DBS10042 (KEMASKINI PENUH)
+    // SENARAI PAUTAN SEBENAR DBS10042 & MAKMAL DIGITAL
     // -------------------------------------------------------------
     const linksData = [
       // KATEGORI 1: NOTA KULIAH & BAB (GAYA FRP - BIRU DIRAJA)
@@ -596,6 +600,53 @@
         url: 'https://youtu.be/LjTkbhKA6-E',
         description: 'Kapasiti haba tentu, pemindahan haba & kecekapan tenaga.',
         iconType: 'video',
+        clickCount: 0
+      },
+
+      // KATEGORI 4: MAKMAL DIGITAL - ONLINE CALCULATOR & SIMULATOR
+      // Sedia untuk diisi dengan tajuk, pautan URL & penerangan anda sendiri:
+      {
+        id: 'sim1',
+        category: 'MAKMAL DIGITAL - Online Calculator & Simulator',
+        categoryTheme: 'purple',
+        itemNumber: '1',
+        title: 'WORK IN PROGRESS',
+        url: '#', // GANTIKAN DENGAN LINK ANDA
+        description: 'WORK IN PROGRESS',
+        iconType: 'simulator',
+        clickCount: 0
+      },
+      {
+        id: 'sim2',
+        category: 'MAKMAL DIGITAL - Online Calculator & Simulator',
+        categoryTheme: 'purple',
+        itemNumber: '2',
+        title: 'WORK IN PROGRESS',
+        url: '#', // GANTIKAN DENGAN LINK ANDA
+        description: 'WORK IN PROGRESS',
+        iconType: 'calculator',
+        clickCount: 0
+      },
+      {
+        id: 'sim3',
+        category: 'MAKMAL DIGITAL - Online Calculator & Simulator',
+        categoryTheme: 'purple',
+        itemNumber: '3',
+        title: 'WORK IN PROGRESS',
+        url: '#', // GANTIKAN DENGAN LINK ANDA
+        description: 'WORK IN PROGRESS',
+        iconType: 'simulator',
+        clickCount: 0
+      },
+      {
+        id: 'sim4',
+        category: 'MAKMAL DIGITAL - Online Calculator & Simulator',
+        categoryTheme: 'purple',
+        itemNumber: '4',
+        title: 'WORK IN PROGRESS',
+        url: '#', // GANTIKAN DENGAN LINK ANDA
+        description: 'WORK IN PROGRESS',
+        iconType: 'calculator',
         clickCount: 0
       }
     ];
@@ -834,7 +885,7 @@
     // PENGENDALIAN CAPAIAN BAHAN APABILA PAUTAN DITEKAN (NATIVE <a> TAG)
     // -------------------------------------------------------------
     function handleLinkClick(e, linkId) {
-      // 1. Jika belum log masuk, sekat navegasi dan tunjuk modal log masuk
+      // 1. Jika belum log masuk, sekat navigasi dan tunjuk modal log masuk
       if (!currentUser) {
         e.preventDefault();
         document.getElementById('loginModal').classList.remove('hidden');
@@ -844,38 +895,44 @@
       const item = linksData.find(l => l.id === linkId);
       if (!item) return;
 
-      // 2. JIKA PENSYARAH: Biarkan tag <a> membuka link secara semula jadi tanpa merekodkan log
+      // 2. Jika pautan masih placeholder (#), maklumkan pada pengguna
+      if (!item.url || item.url === '#') {
+        e.preventDefault();
+        showQuickActionToast(`${item.title} (Pautan sedang dikemaskini)`);
+        return;
+      }
+
+      // 3. JIKA PENSYARAH: Biarkan tag <a> membuka link tanpa log rekod
       if (currentUser.role === 'lecturer') {
         return;
       }
 
-      // 3. JIKA PELAJAR: Catat log & hantar ke Google Sheets di latar belakang
+      // 4. JIKA PELAJAR: Catat log & hantar ke Google Sheets di latar belakang
       if (currentUser.role === 'student') {
         resetInactivityTimer();
-        const now = new Date();
-        const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-
-        const newLog = {
-          id: Date.now(),
-          timestamp: formattedDate,
-          studentName: currentUser.name,
-          studentId: currentUser.studentId,
-          className: currentUser.className,
-          materialAccessed: item.title,
-          category: item.category,
-          url: item.url
-        };
-
-        // Tambah log ke memori tempatan
-        accessLogs.unshift(newLog);
-        item.clickCount++;
-
-        // Hantar ke Google Sheets
-        sendAccessToGoogleSheet(newLog);
-
-        // Paparkan notis pembukaan ringkas
+        recordAccessLog(item);
         showQuickActionToast(item.title);
       }
+    }
+
+    function recordAccessLog(item) {
+      const now = new Date();
+      const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
+      const newLog = {
+        id: Date.now(),
+        timestamp: formattedDate,
+        studentName: currentUser.name,
+        studentId: currentUser.studentId,
+        className: currentUser.className,
+        materialAccessed: item.title,
+        category: item.category,
+        url: item.url
+      };
+
+      accessLogs.unshift(newLog);
+      item.clickCount++;
+      sendAccessToGoogleSheet(newLog);
     }
 
     function toggleAnalyticsDrawer(open) {
@@ -984,6 +1041,11 @@
           cardBorder = 'border-red-500';
           numberBadgeClass = 'bg-red-600 text-white';
           sectionIcon = `📕`;
+        } else if (theme === 'purple') {
+          headerBg = 'badge-3d-purple';
+          cardBorder = 'border-purple-500';
+          numberBadgeClass = 'bg-purple-600 text-white';
+          sectionIcon = `⚙️`;
         }
 
         html += `
@@ -997,9 +1059,6 @@
                   ${cat}
                 </h3>
               </div>
-              <span class="text-[10px] font-poster font-bold bg-black/25 px-2 py-0.5 rounded-full border border-white/30">
-                ${catLinks.length} Bahan
-              </span>
             </div>
 
             <!-- Senarai Baris Bahan (Native <a> Hyperlink) -->
@@ -1009,11 +1068,19 @@
         catLinks.forEach(item => {
           const actionBtnBg = theme === 'green' ? 'bg-emerald-600 hover:bg-emerald-700' :
                               theme === 'red' ? 'bg-red-600 hover:bg-red-700' :
+                              theme === 'purple' ? 'bg-purple-600 hover:bg-purple-700' :
                               'bg-blue-600 hover:bg-blue-700';
 
-          const iconSvg = item.iconType === 'video'
-            ? `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>`
-            : `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`;
+          let iconSvg = '';
+          if (item.iconType === 'video') {
+            iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>`;
+          } else if (item.iconType === 'simulator') {
+            iconSvg = `<span class="text-purple-600 font-bold text-xs">🏎️</span>`;
+          } else if (item.iconType === 'calculator') {
+            iconSvg = `<span class="text-purple-600 font-bold text-xs">🧮</span>`;
+          } else {
+            iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`;
+          }
 
           html += `
             <a href="${item.url}" target="_blank" rel="noopener noreferrer" onclick="handleLinkClick(event, '${item.id}')" class="group flex items-center justify-between p-3 rounded-2xl bg-slate-50 hover:bg-sky-50/70 border-2 border-slate-200 hover:border-blue-400 transition-all cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0 shadow-xs no-underline text-slate-900">
