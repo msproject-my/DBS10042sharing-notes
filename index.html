@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>DBS10042 Engineering Science - Portal Pembelajaran</title>
+  <title>DBS10042 Engineering Science - Portal Pembelajaran & Sumber Rasmi</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -56,8 +56,8 @@
       box-shadow: 0 4px 0 #166534, 0 6px 12px rgba(0,0,0,0.25);
     }
     .badge-3d-purple {
-      background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
-      box-shadow: 0 4px 0 #5B21B6, 0 6px 12px rgba(0,0,0,0.25);
+      background: linear-gradient(180deg, #9333EA 0%, #7E22CE 100%);
+      box-shadow: 0 4px 0 #581C87, 0 6px 12px rgba(0,0,0,0.25);
     }
     .card-3d-poster {
       box-shadow: 0 8px 0 rgba(0,0,0,0.06), 0 14px 28px -4px rgba(0, 0, 0, 0.15);
@@ -93,7 +93,7 @@
     </div>
   </div>
 
-  <!-- NOTIFIKASI PEMBUKAAN PAUTAN PANTAS (PUP-UP TOAST MAKLUMAT) -->
+  <!-- NOTIFIKASI PEMBUKAAN PAUTAN PANTAS -->
   <div id="quickActionToast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-slate-900/95 text-white px-5 py-3 rounded-2xl shadow-2xl border-2 border-sky-400 flex items-center gap-3 hidden transition-all duration-300">
     <div class="w-7 h-7 rounded-xl bg-emerald-500 flex items-center justify-center text-white shrink-0">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -101,7 +101,7 @@
       </svg>
     </div>
     <div>
-      <p id="quickToastText" class="text-xs font-poster font-black text-amber-300">Memproses Pautan...</p>
+      <p id="quickToastText" class="text-xs font-poster font-black text-amber-300">Akses Pautan...</p>
       <p class="text-[10px] text-sky-200">Data capaian telah direkodkan ke Google Sheets.</p>
     </div>
   </div>
@@ -117,7 +117,7 @@
       4. BAR STATUS ATAS (POLITEKNIK TOP BAR)
       ========================================== -->
   <nav class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b-2 border-sky-200 shadow-sm px-4 py-2.5">
-    <div class="max-w-2xl mx-auto flex items-center justify-between">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
       
       <!-- Lencana Politeknik Malaysia -->
       <div class="flex items-center gap-2.5">
@@ -141,122 +141,127 @@
   </nav>
 
   <!-- ==========================================
-      5. KANDUNGAN UTAMA (PORTAL & POSTER DESIGN)
+      5. KANDUNGAN UTAMA (HEADER POSTER + 2 LAJUR BAHAN)
       ========================================== -->
-  <main class="max-w-2xl mx-auto px-3 sm:px-4 py-5 flex-1 w-full">
+  <main class="max-w-6xl mx-auto px-3 sm:px-6 py-5 flex-1 w-full space-y-6">
 
-    <div id="viewPortal" class="flex flex-col items-center">
+    <!-- ==========================================
+        HEADER UTAMA POSTER (GAYA INFOGRAFIK POLITEKNIK)
+        KEKAL DI ATAS MENJADI PAYUNG KURSUS
+        ========================================== -->
+    <div class="w-full poster-bg-grid rounded-3xl p-5 sm:p-7 text-white shadow-2xl border-4 border-white card-3d-poster relative overflow-hidden">
       
-      <!-- ==========================================
-          HEADER UTAMA POSTER (GAYA INFOGRAFIK POLITEKNIK)
-          ========================================== -->
-      <div class="w-full poster-bg-grid rounded-3xl p-5 sm:p-6 text-white shadow-2xl border-4 border-white card-3d-poster relative overflow-hidden mb-6">
-        
-        <!-- Bintang Hiasan 3D -->
-        <div class="absolute top-4 right-4 text-amber-300 font-black text-2xl select-none animate-bounce">★</div>
-        <div class="absolute top-16 right-10 text-amber-200 font-black text-base select-none">✦</div>
-        <div class="absolute top-8 left-4 text-sky-200 font-black text-lg select-none">✦</div>
+      <!-- Bintang Hiasan 3D -->
+      <div class="absolute top-4 right-4 text-amber-300 font-black text-2xl select-none animate-bounce">★</div>
+      <div class="absolute top-16 right-10 text-amber-200 font-black text-base select-none">✦</div>
+      <div class="absolute top-8 left-4 text-sky-200 font-black text-lg select-none">✦</div>
 
-        <!-- Logo Politeknik Port Dickson Card -->
-        <div class="inline-flex items-center gap-2 bg-white text-slate-900 px-3.5 py-1.5 rounded-2xl shadow-md border border-slate-200 mb-3">
+      <!-- Bar Atas Poster (Logo & Lencana Kelas) -->
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="inline-flex items-center gap-2 bg-white text-slate-900 px-3.5 py-1.5 rounded-2xl shadow-md border border-slate-200">
           <div class="w-5 h-5 bg-red-600 rounded flex items-center justify-center text-white font-poster font-black text-[10px]">
             PM
           </div>
           <div class="text-left">
-            <span class="text-[11px] font-poster font-black text-red-600 leading-tight block">POLITEKNIK MALAYSIA</span>
+            <span class="text-[11px] font-poster font-black text-red-600 leading-tight block">****************</span>
             <span class="text-[9px] font-poster font-bold text-slate-800 leading-tight block tracking-wider uppercase">POLITEKNIK PORT DICKSON</span>
           </div>
         </div>
-
-        <!-- Tajuk Poster 3D Besar -->
-        <div class="text-center my-2">
-          <div class="inline-block bg-blue-900/60 backdrop-blur-md px-3.5 py-1 rounded-full border border-sky-300/40 text-[11px] font-poster font-black tracking-widest uppercase text-sky-200 mb-1">
-            PORTAL SUMBER & CAPAIAN NOTA
-          </div>
-          <h1 class="text-3xl sm:text-4xl font-poster font-black tracking-tight text-3d-yellow leading-tight uppercase">
-            ENGINEERING SCIENCE
-          </h1>
-          <div class="text-2xl sm:text-3xl font-poster font-black tracking-wide text-3d-blue mt-0.5">
-            DBS10042
-          </div>
+        <div class="inline-flex items-center gap-1.5 bg-blue-900/70 border border-sky-300/40 text-sky-200 px-3 py-1 rounded-full text-xs font-poster font-bold">
+          <span>Kelas Pengajian:</span>
+          <strong class="text-amber-300 font-black">DAD1A & DEP1C</strong>
         </div>
-
-        <!-- Sesi Pill Badge Merah -->
-        <div class="flex justify-center my-2.5">
-          <div class="badge-3d-red px-5 py-1.5 rounded-full border-2 border-white/80 text-white font-poster font-black text-xs sm:text-sm tracking-wider uppercase flex items-center gap-1.5 shadow-lg">
-            <span>SESI 1 : 2026/2027</span>
-          </div>
-        </div>
-
-        <!-- Maklumat Pensyarah -->
-        <div class="mt-4 pt-3.5 border-t-2 border-white/30 bg-blue-950/40 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/20">
-          <p class="text-xs text-sky-100 font-medium leading-relaxed">
-            Klik mana-mana butang bahan di bawah untuk membuka terus nota Google Drive & video amali.
-          </p>
-          <div class="mt-2 flex flex-wrap items-center justify-center gap-2 pt-2 border-t border-sky-300/20 text-[11px]">
-            <span class="text-sky-200 font-medium">Penyelaras Kursus:</span>
-            <strong class="text-amber-300 uppercase tracking-wide font-poster font-black text-xs">EN. MOHD SAIFUL PAHRUDIN</strong>
-          </div>
-        </div>
-
-        <!-- Kad Pelajar Aktif (Ditunjukkan Selepas Pelajar Log Masuk) -->
-        <div id="studentBadgeContainer" class="mt-3.5 hidden">
-          <div class="bg-amber-400 text-slate-950 rounded-2xl p-3 border-2 border-amber-200 shadow-md flex items-center justify-between text-xs">
-            <div>
-              <span class="text-[9px] font-poster font-black uppercase text-amber-900 tracking-wider block">Sesi Pelajar Aktif</span>
-              <p id="studentBadgeName" class="font-poster font-black text-sm"></p>
-              <p class="text-[10px] font-mono-num font-bold text-amber-900">No. Matrik: <span id="studentBadgeId"></span></p>
-            </div>
-            <div class="text-right">
-              <span id="studentBadgeClass" class="px-3 py-1 bg-blue-900 text-white rounded-xl text-xs font-poster font-black shadow-sm block"></span>
-              <span class="text-[9px] font-poster font-extrabold text-blue-950 mt-1 inline-flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-700 animate-ping"></span> Auto-Sync GSheet
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bar Mod Pensyarah (Hanya untuk Pensyarah) -->
-        <div id="lecturerLiveBar" class="mt-3.5 hidden">
-          <div class="bg-white text-slate-900 rounded-2xl p-3 border-2 border-blue-400 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-              <div>
-                <p class="text-xs font-poster font-black text-blue-900">Mod Pensyarah: Paparan Pelajar Aktif</p>
-                <p class="text-[10px] text-slate-600 font-medium">Akses anda <strong>tidak akan dikira</strong> sebagai capaian pelajar.</p>
-              </div>
-            </div>
-            <button onclick="toggleAnalyticsDrawer(true)" class="badge-3d-blue px-3.5 py-1.5 rounded-xl text-white text-xs font-poster font-black flex items-center justify-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              <span>Lihat Analisis (<span id="btnAnalyticsCount">0</span>)</span>
-            </button>
-          </div>
-        </div>
-
       </div>
 
-      <!-- ==========================================
-          SENARAI SEKSYEN KAD BAHAN & BUTANG LANGSUNG
-          ========================================== -->
-      <div id="linksContainer" class="w-full space-y-6"></div>
-
-      <!-- ==========================================
-          KOTAK NOTA PENTING
-          ========================================== -->
-      <div class="w-full mt-6 bg-amber-400 border-3 border-amber-500 rounded-3xl p-4 shadow-lg flex items-start gap-3.5 text-slate-950">
-        <div class="w-10 h-10 bg-red-600 text-white rounded-2xl flex items-center justify-center font-poster font-black text-xl shadow-md shrink-0">
-          !
+      <!-- Tajuk Poster 3D Besar -->
+      <div class="text-center my-2">
+        <div class="inline-block bg-blue-900/60 backdrop-blur-md px-3.5 py-1 rounded-full border border-sky-300/40 text-[11px] font-poster font-black tracking-widest uppercase text-sky-200 mb-1">
+          PORTAL SUMBER & CAPAIAN NOTA
         </div>
-        <div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poster font-black tracking-tight text-3d-yellow leading-tight uppercase">
+          ENGINEERING SCIENCE
+        </h1>
+        <div class="text-2xl sm:text-3xl lg:text-4xl font-poster font-black tracking-wide text-3d-blue mt-0.5">
+          DBS10042
+        </div>
+      </div>
+
+      <!-- Sesi Pill Badge Merah -->
+      <div class="flex justify-center my-2.5">
+        <div class="badge-3d-red px-5 py-1.5 rounded-full border-2 border-white/80 text-white font-poster font-black text-xs sm:text-sm tracking-wider uppercase flex items-center gap-1.5 shadow-lg">
+          <span>SESI 1 : 2026/2027</span>
+        </div>
+      </div>
+
+      <!-- Maklumat Pensyarah -->
+      <div class="mt-4 pt-3.5 border-t-2 border-white/30 bg-blue-950/40 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/20">
+        <p class="text-xs text-sky-100 font-medium leading-relaxed">
+          Klik mana-mana butang bahan di bawah untuk membuka terus fail Google Drive & video amali.
+        </p>
+        <div class="mt-2 flex flex-wrap items-center justify-center gap-2 pt-2 border-t border-sky-300/20 text-[11px]">
+          <span class="text-sky-200 font-medium">Pensyarah Kursus:</span>
+          <strong class="text-amber-300 uppercase tracking-wide font-poster font-black text-xs">EN. MOHD SAIFUL PAHRUDIN</strong>
+        </div>
+      </div>
+
+      <!-- Kad Pelajar Aktif (Ditunjukkan Selepas Pelajar Log Masuk) -->
+      <div id="studentBadgeContainer" class="mt-3.5 hidden">
+        <div class="bg-amber-400 text-slate-950 rounded-2xl p-3 border-2 border-amber-200 shadow-md flex items-center justify-between text-xs">
+          <div>
+            <span class="text-[9px] font-poster font-black uppercase text-amber-900 tracking-wider block">Sesi Pelajar Aktif</span>
+            <p id="studentBadgeName" class="font-poster font-black text-sm"></p>
+            <p class="text-[10px] font-mono-num font-bold text-amber-900">No. Matrik: <span id="studentBadgeId"></span></p>
+          </div>
+          <div class="text-right">
+            <span id="studentBadgeClass" class="px-3 py-1 bg-blue-900 text-white rounded-xl text-xs font-poster font-black shadow-sm block"></span>
+            <span class="text-[9px] font-poster font-extrabold text-blue-950 mt-1 inline-flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-700 animate-ping"></span> Auto-Sync GSheet
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bar Mod Pensyarah (Hanya untuk Pensyarah) -->
+      <div id="lecturerLiveBar" class="mt-3.5 hidden">
+        <div class="bg-white text-slate-900 rounded-2xl p-3 border-2 border-blue-400 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <span class="font-poster font-black text-xs sm:text-sm uppercase tracking-wide text-red-800">NOTA PENTING</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+            <div>
+              <p class="text-xs font-poster font-black text-blue-900">Mod Pensyarah: Paparan Pelajar Aktif</p>
+              <p class="text-[10px] text-slate-600 font-medium">Akses anda <strong>tidak akan dikira</strong> sebagai capaian pelajar.</p>
+            </div>
           </div>
-          <p class="text-xs text-slate-900 font-semibold mt-0.5 leading-relaxed">
-            Pastikan setiap pelajar menyemak dan mengakses bahan pembelajaran mengikut bab. Data capaian akan direkodkan terus ke Google Sheets bagi tujuan pemantauan kualiti akademik.
-          </p>
+          <button onclick="toggleAnalyticsDrawer(true)" class="badge-3d-blue px-3.5 py-1.5 rounded-xl text-white text-xs font-poster font-black flex items-center justify-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <span>Lihat Analisis (<span id="btnAnalyticsCount">0</span>)</span>
+          </button>
         </div>
       </div>
 
+    </div>
+
+    <!-- ==========================================
+        SUSUN ATUR KIRI & KANAN (SIDE-BY-SIDE GRID)
+        Lajur Kiri: Nota Kuliah (6) + Peperiksaan (2) = 8
+        Lajur Kanan: Video Amali (3) + Makmal Digital (4) = 7
+        ========================================== -->
+    <div id="linksContainer" class="w-full"></div>
+
+    <!-- ==========================================
+        KOTAK NOTA PENTING
+        ========================================== -->
+    <div class="w-full bg-amber-400 border-3 border-amber-500 rounded-3xl p-4 shadow-lg flex items-start gap-3.5 text-slate-950">
+      <div class="w-10 h-10 bg-red-600 text-white rounded-2xl flex items-center justify-center font-poster font-black text-xl shadow-md shrink-0">
+        !
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="font-poster font-black text-xs sm:text-sm uppercase tracking-wide text-red-800">NOTA PENTING</span>
+        </div>
+        <p class="text-xs text-slate-900 font-semibold mt-0.5 leading-relaxed">
+          Pastikan setiap pelajar menyemak dan mengakses bahan pembelajaran mengikut bab. Data capaian akan direkodkan terus ke Google Sheets bagi tujuan pemantauan kualiti akademik.
+        </p>
+      </div>
     </div>
 
   </main>
@@ -348,7 +353,7 @@
 
       <div class="p-3 bg-sky-50 border-t border-sky-200 text-center">
         <p class="text-[11px] text-blue-950 font-bold">
-          Data capaian dihantar secara langsung ke Google Sheets penyelaras.
+          Data capaian dihantar secara langsung ke Google Sheets pensyarah.
         </p>
       </div>
 
@@ -359,7 +364,7 @@
       8. FOOTER DENGAN HAK CIPTA MOHDSAIFULPAHRUDIN
       ========================================== -->
   <footer class="w-full bg-white border-t-2 border-slate-200 py-5 px-4 text-center mt-6">
-    <div class="max-w-2xl mx-auto space-y-2">
+    <div class="max-w-6xl mx-auto space-y-2">
       <div class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-900 to-sky-800 text-white px-4 py-1.5 rounded-full text-[11px] font-poster font-black shadow-sm">
         <span>Utamakan adab sebelum menuntut ilmu.</span>
         <span class="text-amber-300">&bull; Bersama Kita Jayakan Kecemerlangan!</span>
@@ -426,7 +431,7 @@
 
         <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-2.5 text-[10px] text-blue-900 flex items-start gap-2 font-semibold">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          <span>Penyelaras Kursus: <strong>En. Mohd Saiful Pahrudin</strong>. Setiap capaian bahan pembelajaran akan diselaraskan terus ke Google Sheets.</span>
+          <span>Pensyarah Kursus: <strong>En. Mohd Saiful Pahrudin</strong>. Setiap capaian bahan pembelajaran akan diselaraskan terus ke Google Sheets.</span>
         </div>
 
         <button type="submit" class="w-full mt-2 py-3 badge-3d-blue text-white rounded-2xl text-xs font-poster font-black tracking-wider uppercase shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2">
@@ -473,7 +478,7 @@
     const GSHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzcBHKiLPatgTYbQ9HnpXQgnKTxyNBwzOkyc3TNBNi71Td0n3QDFCR2Er7TQfNKJ6vS/exec";
 
     // -------------------------------------------------------------
-    // SENARAI PAUTAN SEBENAR DBS10042 & MAKMAL DIGITAL
+    // SENARAI 15 PAUTAN SEBENAR DBS10042
     // -------------------------------------------------------------
     const linksData = [
       // KATEGORI 1: NOTA KULIAH & BAB (GAYA FRP - BIRU DIRAJA)
@@ -603,15 +608,14 @@
         clickCount: 0
       },
 
-      // KATEGORI 4: MAKMAL DIGITAL - ONLINE CALCULATOR & SIMULATOR
-      // Sedia untuk diisi dengan tajuk, pautan URL & penerangan anda sendiri:
+      // KATEGORI 4: MAKMAL DIGITAL - ONLINE CALCULATOR & SIMULATOR (GAYA UNGU)
       {
         id: 'sim1',
         category: 'MAKMAL DIGITAL - Online Calculator & Simulator',
         categoryTheme: 'purple',
         itemNumber: '1',
         title: 'WORK IN PROGRESS',
-        url: '#', // GANTIKAN DENGAN LINK ANDA
+        url: '#',
         description: 'WORK IN PROGRESS',
         iconType: 'simulator',
         clickCount: 0
@@ -622,7 +626,7 @@
         categoryTheme: 'purple',
         itemNumber: '2',
         title: 'WORK IN PROGRESS',
-        url: '#', // GANTIKAN DENGAN LINK ANDA
+        url: '#',
         description: 'WORK IN PROGRESS',
         iconType: 'calculator',
         clickCount: 0
@@ -633,7 +637,7 @@
         categoryTheme: 'purple',
         itemNumber: '3',
         title: 'WORK IN PROGRESS',
-        url: '#', // GANTIKAN DENGAN LINK ANDA
+        url: '#',
         description: 'WORK IN PROGRESS',
         iconType: 'simulator',
         clickCount: 0
@@ -644,7 +648,7 @@
         categoryTheme: 'purple',
         itemNumber: '4',
         title: 'WORK IN PROGRESS',
-        url: '#', // GANTIKAN DENGAN LINK ANDA
+        url: '#',
         description: 'WORK IN PROGRESS',
         iconType: 'calculator',
         clickCount: 0
@@ -835,7 +839,7 @@
         currentUser = {
           name: 'En. Mohd Saiful Pahrudin',
           studentId: 'STAFF-AUTH',
-          className: 'Penyelaras Kursus',
+          className: 'Pensyarah Kursus',
           role: 'lecturer'
         };
 
@@ -895,44 +899,45 @@
       const item = linksData.find(l => l.id === linkId);
       if (!item) return;
 
-      // 2. Jika pautan masih placeholder (#), maklumkan pada pengguna
-      if (!item.url || item.url === '#') {
+      // Jika pautan masih belum sedia ('#'), halang navigasi dan beri notis
+      if (item.url === '#') {
         e.preventDefault();
-        showQuickActionToast(`${item.title} (Pautan sedang dikemaskini)`);
+        showQuickActionToast('Ruangan Makmal Digital sedang dikemaskini.');
         return;
       }
 
-      // 3. JIKA PENSYARAH: Biarkan tag <a> membuka link tanpa log rekod
+      // 2. JIKA PENSYARAH: Biarkan tag <a> membuka link secara semula jadi tanpa merekodkan log
       if (currentUser.role === 'lecturer') {
         return;
       }
 
-      // 4. JIKA PELAJAR: Catat log & hantar ke Google Sheets di latar belakang
+      // 3. JIKA PELAJAR: Catat log & hantar ke Google Sheets di latar belakang
       if (currentUser.role === 'student') {
         resetInactivityTimer();
-        recordAccessLog(item);
+        const now = new Date();
+        const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
+        const newLog = {
+          id: Date.now(),
+          timestamp: formattedDate,
+          studentName: currentUser.name,
+          studentId: currentUser.studentId,
+          className: currentUser.className,
+          materialAccessed: item.title,
+          category: item.category,
+          url: item.url
+        };
+
+        // Tambah log ke memori tempatan
+        accessLogs.unshift(newLog);
+        item.clickCount++;
+
+        // Hantar ke Google Sheets
+        sendAccessToGoogleSheet(newLog);
+
+        // Paparkan notis pembukaan ringkas
         showQuickActionToast(item.title);
       }
-    }
-
-    function recordAccessLog(item) {
-      const now = new Date();
-      const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-
-      const newLog = {
-        id: Date.now(),
-        timestamp: formattedDate,
-        studentName: currentUser.name,
-        studentId: currentUser.studentId,
-        className: currentUser.className,
-        materialAccessed: item.title,
-        category: item.category,
-        url: item.url
-      };
-
-      accessLogs.unshift(newLog);
-      item.clickCount++;
-      sendAccessToGoogleSheet(newLog);
     }
 
     function toggleAnalyticsDrawer(open) {
@@ -1016,13 +1021,13 @@
 
     // -------------------------------------------------------------
     // RENDER SENARAI BUTANG BAHAN BERGAYA POSTER (NATIVE <a> TAGS)
+    // DISUSUN KIRI-KANAN (BALANCED DUAL-COLUMN GRID)
     // -------------------------------------------------------------
     function renderLinks() {
       const container = document.getElementById('linksContainer');
       const categories = [...new Set(linksData.map(l => l.category))];
 
-      let html = '';
-      categories.forEach(cat => {
+      function buildCategoryCardHtml(cat) {
         const catLinks = linksData.filter(l => l.category === cat);
         const theme = catLinks[0]?.categoryTheme || 'blue';
 
@@ -1048,7 +1053,7 @@
           sectionIcon = `⚙️`;
         }
 
-        html += `
+        let cardHtml = `
           <div class="bg-white rounded-3xl border-4 ${cardBorder} shadow-xl overflow-hidden card-3d-poster">
             
             <!-- Header Kategori 3D -->
@@ -1082,7 +1087,7 @@
             iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`;
           }
 
-          html += `
+          cardHtml += `
             <a href="${item.url}" target="_blank" rel="noopener noreferrer" onclick="handleLinkClick(event, '${item.id}')" class="group flex items-center justify-between p-3 rounded-2xl bg-slate-50 hover:bg-sky-50/70 border-2 border-slate-200 hover:border-blue-400 transition-all cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0 shadow-xs no-underline text-slate-900">
               
               <div class="flex items-center gap-3">
@@ -1118,10 +1123,25 @@
           `;
         });
 
-        html += `</div></div>`;
-      });
+        cardHtml += `</div></div>`;
+        return cardHtml;
+      }
 
-      container.innerHTML = html;
+      // Bahagikan modul kategori kepada dua lajur seimbang (Side-by-Side):
+      // Lajur A: Nota Kuliah (6 item) + Ujian & Peperiksaan (2 item) = 8 item
+      // Lajur B: Video Amali (3 item) + Makmal Digital (4 item) = 7 item
+      const colA_Categories = categories.filter((_, idx) => idx === 0 || idx === 1);
+      const colB_Categories = categories.filter((_, idx) => idx >= 2);
+
+      let colAHtml = colA_Categories.map(cat => buildCategoryCardHtml(cat)).join('');
+      let colBHtml = colB_Categories.map(cat => buildCategoryCardHtml(cat)).join('');
+
+      container.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+          <div class="space-y-5">${colAHtml}</div>
+          <div class="space-y-5">${colBHtml}</div>
+        </div>
+      `;
     }
 
     // -------------------------------------------------------------
